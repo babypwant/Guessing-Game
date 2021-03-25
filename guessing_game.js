@@ -14,6 +14,10 @@ function randomInRange(min, Range) {
 }
 
 let checkGuess = function (num) {
+    if (isNaN(Number(num))) {
+        console.log('Put in a number')
+        return false;
+    }
     if (secretnumber < num) {
         console.log("too high");
         return false;
@@ -32,14 +36,14 @@ let askGuess = function () {
     rl.question('Enter a guess: ', (answer) => {
         numAttempts--;
         if (!checkGuess(answer)) {
-            if (numAttempts === 0){
+            if (numAttempts === 0) {
                 console.log("You Lose!");
                 rl.close();
             }
-            else{
+            else {
                 askGuess();
             }
-        } 
+        }
         else {
             console.log('You Win!');
             rl.close();
@@ -48,7 +52,7 @@ let askGuess = function () {
 }
 let askRange = (limit) => {
     numAttempts = limit;
-    rl.question("Enter a max number: ", (max) =>{
+    rl.question("Enter a max number: ", (max) => {
         rl.question("Enter a min number: ", (min) => {
             console.log(`I'm thinking of a number between ${min} and ${max}...`);
             secretnumber = randomInRange(min, max);
