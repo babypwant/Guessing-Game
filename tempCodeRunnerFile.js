@@ -4,15 +4,8 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let secretnumber = 100;
+let secretnumber = 5;
 
-let randomInRange = function (min, max) {
-
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-
-}
 
 let checkGuess = function (num) {
     if (secretnumber < num) {
@@ -32,15 +25,8 @@ let checkGuess = function (num) {
 let askGuess = function () {
     rl.question('Enter a guess: ', (answer) => {
         let res = checkGuess(answer)
-        if (!res) {
-            askGuess()
-        } else {
-            console.log('You Win!')
-            rl.close();
-        }
+        console.log(res)
+        rl.close();
     });
 }
-console.log(randomInRange(15, 20))
-console.log(randomInRange(15, 20))
-console.log(randomInRange(15, 20))
-//askGuess();
+askGuess();
