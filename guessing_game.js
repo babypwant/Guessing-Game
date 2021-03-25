@@ -4,14 +4,12 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let secretnumber = 100;
+let secretnumber = randomInRange(0, 100);
 
-let randomInRange = function (min, max) {
-
+function randomInRange(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
-
 }
 
 let checkGuess = function (num) {
@@ -31,16 +29,24 @@ let checkGuess = function (num) {
 
 let askGuess = function () {
     rl.question('Enter a guess: ', (answer) => {
-        let res = checkGuess(answer)
+        let res = checkGuess(answer);
         if (!res) {
-            askGuess()
+            askGuess();
         } else {
-            console.log('You Win!')
+            console.log('You Win!');
             rl.close();
         }
     });
 }
-console.log(randomInRange(15, 20))
-console.log(randomInRange(15, 20))
-console.log(randomInRange(15, 20))
+
+function askRange(){
+    rl.question("Enter a max number: ", (answer1) => {
+        rl.question("Enter a min number: ", (answer2) =>{
+            console.log("min entered ");
+            rl.close();
+        });
+    });
+
+}
 //askGuess();
+askRange();
