@@ -29,8 +29,7 @@ let checkGuess = function (num) {
 
 let askGuess = function () {
     rl.question('Enter a guess: ', (answer) => {
-        let res = checkGuess(answer);
-        if (!res) {
+        if (!checkGuess(answer)) {
             askGuess();
         } else {
             console.log('You Win!');
@@ -38,14 +37,15 @@ let askGuess = function () {
         }
     });
 }
+let askMax = (max) => {
+    rl.question("Enter a min number: ", (min) => {
+        console.log(`I'm thinking of a number between ${min} and ${max}...`);
+        secretnumber = randomInRange(min, max);
+        askGuess();
 
-function askRange() {
-    rl.question("Enter a max number: ", (max) => {
-        rl.question("Enter a min number: ", (min) => {
-            console.log(`I'm thinking of a number between ${min} and ${max}...`);
-            secretnumber = randomInRange(min, max);
-            askGuess();
-        });
     });
 }
-askRange();
+
+rl.question("Enter a max number: ", askMax);
+
+
