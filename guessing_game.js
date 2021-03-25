@@ -45,10 +45,7 @@ function askRange() {
             console.log(`I'm thinking of a number between ${min} and ${max}...`);
             secretnumber = randomInRange(min, max);
             askGuess();
-
         });
     });
-
 }
 askRange();
-
